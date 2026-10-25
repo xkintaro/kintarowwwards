@@ -13,6 +13,7 @@ import Image from "next/image";
 import type { ProjectItem } from "@/types/project";
 import { ShineButton } from "@/components/ui/shine-button";
 import { useRef } from "react";
+import { RichText } from "@/lib/markdown";
 
 interface ProjectModalProps {
     open: boolean;
@@ -81,7 +82,7 @@ export function ProjectModal({ open, onOpenChange, project }: ProjectModalProps)
                         <div>
                             <h3 className="text-sm tracking-widest text-muted-foreground uppercase mb-4">{dict.aboutProject}</h3>
                             <p className="text-lg text-foreground/80 leading-relaxed font-light">
-                                {project.description}
+                                <RichText>{project.description}</RichText>
                             </p>
                         </div>
 

@@ -7,6 +7,7 @@ import {
 
 import { useLanguage } from "@/providers/language-provider";
 import { useLenisModal } from "@/hooks/use-lenis-modal";
+import { RichText } from "@/lib/markdown";
 
 interface AboutModalProps {
     open: boolean;
@@ -36,7 +37,7 @@ export function AboutModal({ open, onOpenChange }: AboutModalProps) {
                 <div className="overflow-y-auto px-8 pb-8 pt-2 flex-1" data-lenis-prevent="true">
                     <div className="flex flex-col gap-6">
                         <div className="text-sm text-foreground/80 leading-relaxed font-light">
-                            {content.about.full}
+                            <RichText>{content.about.full}</RichText>
                         </div>
                     </div>
                 </div>

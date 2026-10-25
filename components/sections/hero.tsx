@@ -7,6 +7,7 @@ import { useLanguage } from "@/providers/language-provider";
 import { ArrowRight, Mouse } from "lucide-react";
 import { ContactModal } from "@/components/modals/contact-modal";
 import { InteractiveParticles } from "@/components/effects/interactive-particles";
+import { RichText } from "@/lib/markdown";
 
 const TRACK_1 = [
     "/hero-slider/makise-kurisu-2.webp",
@@ -159,7 +160,7 @@ export default function Hero() {
 
                 <div className="space-y-6 sm:space-y-8 xl:space-y-10">
                     <p className="sm:text-lg 2xl:text-xl text-muted-foreground font-light leading-relaxed max-w-xl mix-blend-difference">
-                        {content.about.description}
+                        <RichText>{content.about.description}</RichText>
                     </p>
 
                     <div className="flex flex-col sm:flex-row flex-wrap sm:items-center gap-4">

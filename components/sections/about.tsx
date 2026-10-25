@@ -6,6 +6,7 @@ import { useLanguage } from "@/providers/language-provider";
 import { useState } from "react";
 import { AboutModal } from "@/components/modals/about-modal";
 import { HangingProfile } from "@/components/widgets/hanging-profile";
+import { RichText } from "@/lib/markdown";
 
 export default function About() {
     const { content, dict } = useLanguage();
@@ -46,13 +47,13 @@ export default function About() {
 
                             <BlurReveal>
                                 <h3 className="text-3xl md:text-5xl lg:text-6xl font-light leading-[1.1]">
-                                    {content.about.intro}
+                                    <RichText>{content.about.intro}</RichText>
                                 </h3>
                             </BlurReveal>
 
                             <BlurReveal>
                                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                                    {content.about.description}
+                                    <RichText>{content.about.description}</RichText>
                                 </p>
                             </BlurReveal>
 

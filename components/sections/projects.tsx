@@ -8,6 +8,7 @@ import { useMediaQuery, BREAKPOINTS } from "@/hooks/use-media-query";
 import { BlurReveal } from "@/components/effects/blur-reveal";
 import { ProjectModal } from "@/components/modals/project-modal";
 import type { ProjectItem } from "@/types/project";
+import { RichText } from "@/lib/markdown";
 
 export default function Projects() {
     const { content, dict } = useLanguage();
@@ -107,7 +108,7 @@ export default function Projects() {
 
                             <BlurReveal>
                                 <p className="mt-4 text-muted-foreground text-lg">
-                                    {dict.projectsIntro}
+                                    <RichText>{dict.projectsIntro}</RichText>
                                 </p>
                             </BlurReveal>
                         </div>
@@ -145,7 +146,7 @@ export default function Projects() {
 
                                 <BlurReveal>
                                     <p className="mt-4 text-5xl font-light leading-tight">
-                                        {dict.projectsIntro}
+                                        <RichText>{dict.projectsIntro}</RichText>
                                     </p>
                                 </BlurReveal>
 

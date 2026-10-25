@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useMemo } from "react";
 import type { Locale } from "@/lib/i18n";
-import { parseMarkdown } from "@/lib/markdown";
 import { deepMerge } from "@/lib/utils";
 import type { DictionaryType, ContentLanguageType, SharedDataType } from "@/lib/loaders";
 
@@ -25,18 +24,13 @@ interface LanguageProviderProps {
 }
 
 export function LanguageProvider({ children, lang, dictionary, contents, shared }: LanguageProviderProps) {
-    const dict = useMemo(
-        () => parseMarkdown(dictionary),
-        [dictionary],
-    );
-
     const content = useMemo(
-        () => parseMarkdown(deepMerge(shared as unknown as Record<string, unknown>, contents as unknown as Record<string, unknown>)) as unknown as ContentType,
+        () => deepMerge(shared, contents),
         [contents, shared],
     );
 
     return (
-        <LanguageContext.Provider value={{ language: lang, dict, content }}>
+        <LanguageContext.Provider value={{ language: lang, dict: dictionary, content }}>
             {children}
         </LanguageContext.Provider>
     );
