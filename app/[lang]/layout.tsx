@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Syne } from "next/font/google";
+import { inter, syne } from "@/lib/fonts";
 import "../globals.css";
 import SmoothScroll from "@/providers/smooth-scroll-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -10,9 +10,6 @@ import Navbar from "@/components/layout/navbar";
 import { isValidLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { getDictionary, getContents, getSharedData } from "@/lib/loaders";
-
-const syne = Syne({ subsets: ["latin"], variable: "--font-syne" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Kintarowwwards",

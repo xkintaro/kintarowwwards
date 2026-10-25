@@ -1,12 +1,9 @@
-import { Inter, Syne } from "next/font/google";
+import { inter, syne } from "@/lib/fonts";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { CustomCursor } from "@/components/layout/custom-cursor";
 import { NotFoundContent } from "@/components/sections/not-found-content";
 import enDict from "@/dictionaries/en.json";
-
-const syne = Syne({ subsets: ["latin"], variable: "--font-syne" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata = {
   title: "404 - Page Not Found",
