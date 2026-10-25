@@ -76,8 +76,8 @@ export default function Hero() {
                                     src={src}
                                     alt="Portrait"
                                     fill
-                                    sizes="(max-width: 768px) 0px, (max-width: 1280px) 20vw, 12vw"
-                                    priority
+                                    sizes="(max-width: 767px) 0px, (max-width: 1023px) 154px, (max-width: 1279px) 184px, (max-width: 1535px) 204px, 224px"
+                                    loading="lazy"
                                     className="object-cover object-center grayscale contrast-[1.08] brightness-[0.8]"
                                 />
                             </div>
@@ -101,8 +101,8 @@ export default function Hero() {
                                     src={src}
                                     alt="Portrait"
                                     fill
-                                    sizes="(max-width: 640px) 45vw, (max-width: 1280px) 20vw, 12vw"
-                                    priority
+                                    sizes="(max-width: 639px) 192px, (max-width: 767px) 232px, (max-width: 1023px) 154px, (max-width: 1279px) 184px, (max-width: 1535px) 204px, 224px"
+                                    loading={idx >= TRACK_2.length && idx < TRACK_2.length + 3 ? "eager" : "lazy"}
                                     className="object-cover object-center grayscale contrast-[1.08] brightness-[0.8]"
                                 />
                             </div>
