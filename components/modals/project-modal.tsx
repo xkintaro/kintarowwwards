@@ -12,6 +12,7 @@ import { Github, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import type { ProjectItem } from "@/types/project";
 import { ShineButton } from "@/components/ui/shine-button";
+import { useRef } from "react";
 
 interface ProjectModalProps {
     open: boolean;
@@ -20,6 +21,7 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ open, onOpenChange, project }: ProjectModalProps) {
+    const openerRef = useRef<HTMLElement | null>(null);
     useLenisModal(open);
     const { dict } = useLanguage();
 
@@ -28,6 +30,15 @@ export function ProjectModal({ open, onOpenChange, project }: ProjectModalProps)
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent
+                onOpenAutoFocus={() => {
+                    openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+                }}
+                onCloseAutoFocus={(event) => {
+                    if (openerRef.current?.isConnected) {
+                        event.preventDefault();
+                        openerRef.current.focus({ preventScroll: true });
+                    }
+                }}
                 showCloseButton={true}
                 className="flex flex-col sm:max-w-[800px] w-[95vw] max-h-[90vh] p-0 gap-0 border-border/50 bg-background/95 backdrop-blur-xl shrink-0"
             >

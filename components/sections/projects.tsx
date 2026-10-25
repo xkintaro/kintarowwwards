@@ -192,10 +192,9 @@ const ProjectCard = React.memo(function ProjectCard({ project, onClick }: { proj
     return (
         <BlurReveal>
             <div
-                onClick={onClick}
                 className="group relative w-full xl:w-[45vw] aspect-4/3 shrink-0 xl:mx-6 perspective-1000 cursor-pointer"
             >
-                <div className="relative w-full h-full overflow-hidden bg-muted border border-border/50 transition-all duration-700 ease-out group-hover:border-foreground/20">
+                <div className="relative w-full h-full overflow-hidden bg-muted border border-border/50 transition-all duration-700 ease-out group-hover:border-foreground/20 group-focus-within:border-foreground/20">
                     <div className="absolute inset-0 z-0">
                         <Image
                             src={project.image}
@@ -203,7 +202,7 @@ const ProjectCard = React.memo(function ProjectCard({ project, onClick }: { proj
                             fill
                             sizes="(max-width: 1280px) 100vw, 45vw"
                             loading="lazy"
-                            className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0"
+                            className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 group-focus-within:opacity-100 group-focus-within:scale-105 transition-all duration-1000 grayscale group-hover:grayscale-0 group-focus-within:grayscale-0"
                         />
                         <div className="absolute inset-0 bg-linear-to-t from-background via-background/40 to-transparent" />
                     </div>
@@ -211,23 +210,30 @@ const ProjectCard = React.memo(function ProjectCard({ project, onClick }: { proj
                     <div className="absolute inset-0 z-10 flex flex-col justify-between p-6 xl:p-12">
                         <div className="flex justify-between items-start">
                             <div className="overflow-hidden">
-                                <span className="block text-xs xl:text-sm font-mono tracking-widest text-muted-foreground uppercase transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                                <span className="block text-xs xl:text-sm font-mono tracking-widest text-muted-foreground uppercase transform translate-y-full group-hover:translate-y-0 group-focus-within:translate-y-0 transition-transform duration-500 delay-100">
                                     {project.category}
                                 </span>
                             </div>
                             <div className="overflow-hidden">
-                                <span className="block text-xs xl:text-sm font-mono text-muted-foreground transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                                <span className="block text-xs xl:text-sm font-mono text-muted-foreground transform translate-y-full group-hover:translate-y-0 group-focus-within:translate-y-0 transition-transform duration-500 delay-200">
                                     {project.year}
                                 </span>
                             </div>
                         </div>
 
-                        <h3 className="absolute bottom-6 md:bottom-8 2xl:bottom-12 left-6 md:left-8 2xl:left-12 text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black tracking-tighter uppercase text-foreground opacity-10 group-hover:opacity-100 transition-opacity duration-500 delay-100 pointer-events-none">
+                        <h3 className="absolute bottom-6 md:bottom-8 2xl:bottom-12 left-6 md:left-8 2xl:left-12 text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black tracking-tighter uppercase text-foreground opacity-10 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-500 delay-100 pointer-events-none">
                             {project.title}
                         </h3>
                     </div>
 
                 </div>
+                <button
+                    type="button"
+                    onClick={onClick}
+                    aria-label={project.title}
+                    aria-haspopup="dialog"
+                    className="absolute inset-0 z-20 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+                />
             </div>
         </BlurReveal>
     );
