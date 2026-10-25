@@ -37,9 +37,10 @@ class Particle {
 
         const dx = mouse.x - this.x;
         const dy = mouse.y - this.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+        const distanceSquared = dx * dx + dy * dy;
 
-        if (dist < mouse.radius) {
+        if (distanceSquared > 0 && distanceSquared < mouse.radius * mouse.radius) {
+            const dist = Math.sqrt(distanceSquared);
             const forceDirectionX = dx / dist;
             const forceDirectionY = dy / dist;
             const force = (mouse.radius - dist) / mouse.radius;
@@ -54,9 +55,10 @@ class Particle {
         this.vx += (this.baseVx - this.vx) * 0.04;
         this.vy += (this.baseVy - this.vy) * 0.04;
 
-        const currentSpeed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+        const speedSquared = this.vx * this.vx + this.vy * this.vy;
         const maxSpeed = 4 * dpr;
-        if (currentSpeed > maxSpeed) {
+        if (speedSquared > maxSpeed * maxSpeed) {
+            const currentSpeed = Math.sqrt(speedSquared);
             this.vx = (this.vx / currentSpeed) * maxSpeed;
             this.vy = (this.vy / currentSpeed) * maxSpeed;
         }
@@ -90,7 +92,8 @@ export function InteractiveParticles() {
         let isVisible = false;
         let particles: Particle[] = [];
         let cachedRect = canvas.getBoundingClientRect();
-        let cachedDpr = window.devicePixelRatio || 1;
+        // Keep retina sharpness without a 3x/4x backing canvas for tiny particles.
+        let cachedDpr = Math.min(window.devicePixelRatio || 1, 2);
         let cachedIsDark = document.documentElement.classList.contains('dark');
 
         const themeObserver = new MutationObserver(() => {
@@ -103,7 +106,7 @@ export function InteractiveParticles() {
 
         const resizeCanvas = () => {
             cachedRect = canvas.getBoundingClientRect();
-            cachedDpr = window.devicePixelRatio || 1;
+            cachedDpr = Math.min(window.devicePixelRatio || 1, 2);
 
             canvas.width = cachedRect.width * cachedDpr;
             canvas.height = cachedRect.height * cachedDpr;
