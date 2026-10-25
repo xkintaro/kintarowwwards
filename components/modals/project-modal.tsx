@@ -58,6 +58,7 @@ export function ProjectModal({ open, onOpenChange, project }: ProjectModalProps)
                                 src={project.image}
                                 alt={project.title}
                                 fill
+                                sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 842px) 95vw, 800px"
                                 className="object-cover rounded-lg"
                                 priority
                             />
