@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback, useId } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform, useMotionTemplate } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -22,6 +22,9 @@ export default function Navbar() {
 
   const dummyRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileMenuId = useId();
 
   const { scrollY } = useScroll();
 
@@ -77,6 +80,64 @@ export default function Navbar() {
     };
   }, [isMobileMenuOpen, lenis]);
 
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const menuButton = menuButtonRef.current;
+    const header = headerRef.current;
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setIsMobileMenuOpen(false);
+    };
+    const focusMenu = () => mobileMenuRef.current?.querySelector<HTMLElement>("a[href]")?.focus({ preventScroll: true });
+    const frame = requestAnimationFrame(focusMenu);
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Radix dropdowns manage their own keyboard navigation and Escape key.
+      if (event.defaultPrevented || (event.target instanceof Element && event.target.closest('[data-slot="dropdown-menu-content"]'))) return;
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setIsMobileMenuOpen(false);
+      } else if (event.key === "Tab") {
+        const controls = Array.from(headerRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [])
+          .filter(element => element.getClientRects().length > 0);
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+
+    const containFocus = (event: FocusEvent) => {
+      if (!(event.target instanceof Element)) return;
+      if (headerRef.current?.contains(event.target) || event.target.closest('[data-slot="dropdown-menu-content"]')) return;
+      focusMenu();
+    };
+
+    closeOnDesktop();
+    desktop.addEventListener("change", closeOnDesktop);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("focusin", containFocus);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      desktop.removeEventListener("change", closeOnDesktop);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("focusin", containFocus);
+      if (menuButton?.isConnected && menuButton.getClientRects().length) {
+        menuButton.focus({ preventScroll: true });
+      } else {
+        header?.querySelector<HTMLElement>('a[href]')?.focus({ preventScroll: true });
+      }
+    };
+  }, [isMobileMenuOpen]);
+
   const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const targetId = href.replace("#", "");
@@ -124,6 +185,9 @@ export default function Navbar() {
   return (
     <motion.header
       ref={headerRef}
+      role={isMobileMenuOpen ? "dialog" : undefined}
+      aria-modal={isMobileMenuOpen ? true : undefined}
+      aria-label={isMobileMenuOpen ? dict.nav.menuLabel : undefined}
       style={{
         paddingTop: py,
         paddingBottom: py,
@@ -181,9 +245,13 @@ export default function Navbar() {
 
         <div className="flex xl:hidden items-center gap-4">
           <button
+            ref={menuButtonRef}
+            type="button"
             onClick={() => setIsMobileMenuOpen(prev => !prev)}
-            className="relative z-110 p-2 text-foreground focus:outline-none"
-            aria-label="Toggle Menu"
+            className="relative z-110 p-2 text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-md"
+            aria-label={isMobileMenuOpen ? dict.nav.closeMenu : dict.nav.openMenu}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls={isMobileMenuOpen ? mobileMenuId : undefined}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -193,6 +261,8 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            ref={mobileMenuRef}
+            id={mobileMenuId}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

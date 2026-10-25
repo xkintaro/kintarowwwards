@@ -1,5 +1,8 @@
 {
     "nav": {
+        "menuLabel": "Navigation menu",
+        "openMenu": "Open menu",
+        "closeMenu": "Close menu",
         "home": "Home",
         "about": "About",
         "stack": "Stack",

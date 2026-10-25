@@ -1,5 +1,8 @@
 {
     "nav": {
+        "menuLabel": "Gezinme menüsü",
+        "openMenu": "Menüyü aç",
+        "closeMenu": "Menüyü kapat",
         "home": "Ana Sayfa",
         "about": "Hakkımda",
         "stack": "Teknolojiler",
