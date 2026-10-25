@@ -7,6 +7,8 @@ export function HangingProfile() {
   const boxRef = useRef<HTMLDivElement>(null);
   const ropeRef = useRef<SVGLineElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const wakePhysicsRef = useRef<(() => void) | null>(null);
+  const cleanupDragRef = useRef<(() => void) | null>(null);
 
   const gravity = 1.2;
   const ropeLength = 180;
@@ -59,6 +61,18 @@ export function HangingProfile() {
         state.current.velocity = 0;
       }
 
+      // Stop only when the remaining movement is below a visible pixel.
+      const isResting = !state.current.isDragging
+        && Math.abs(state.current.angle) < 0.0005
+        && Math.abs(state.current.velocity) < 0.00005
+        && Math.abs(state.current.currentLength - ropeLength) < 0.1;
+
+      if (isResting) {
+        state.current.angle = 0;
+        state.current.velocity = 0;
+        state.current.currentLength = ropeLength;
+      }
+
       if (boxRef.current && ropeRef.current) {
         const x = state.current.currentLength * Math.sin(state.current.angle);
         const y = state.current.currentLength * Math.cos(state.current.angle);
@@ -69,13 +83,15 @@ export function HangingProfile() {
         boxRef.current.style.transform = `translate(${x}px, ${y}px) rotate(${-state.current.angle}rad)`;
       }
 
-      animationFrameId = requestAnimationFrame(updatePhysics);
+      animationFrameId = isResting ? 0 : requestAnimationFrame(updatePhysics);
     };
 
     const startLoop = () => {
-      if (animationFrameId) return;
+      if (!isVisible || animationFrameId) return;
       animationFrameId = requestAnimationFrame(updatePhysics);
     };
+
+    wakePhysicsRef.current = startLoop;
 
     const stopLoop = () => {
       if (animationFrameId) {
@@ -101,12 +117,16 @@ export function HangingProfile() {
     }
 
     return () => {
+      wakePhysicsRef.current = null;
+      cleanupDragRef.current?.();
       stopLoop();
       observer.disconnect();
     };
   }, []);
 
   const handlePointerDown = (e: React.PointerEvent) => {
+    if (!e.isPrimary || e.button !== 0) return;
+    cleanupDragRef.current?.();
     state.current.isDragging = true;
     if (boxRef.current) {
       boxRef.current.style.cursor = "grabbing";
@@ -129,12 +149,17 @@ export function HangingProfile() {
       }
       window.removeEventListener("pointermove", updateMousePos);
       window.removeEventListener("pointerup", handlePointerUp);
+      window.removeEventListener("pointercancel", handlePointerUp);
+      cleanupDragRef.current = null;
     };
 
     updateMousePos(e.nativeEvent as PointerEvent);
 
     window.addEventListener("pointermove", updateMousePos);
     window.addEventListener("pointerup", handlePointerUp);
+    window.addEventListener("pointercancel", handlePointerUp);
+    cleanupDragRef.current = handlePointerUp;
+    wakePhysicsRef.current?.();
   };
 
   return (
@@ -163,6 +188,7 @@ export function HangingProfile() {
           left: "50%",
           marginLeft: "-70px",
           transformOrigin: "center top",
+          transform: "translate(0px, 180px)",
           touchAction: "none"
         }}
       >
