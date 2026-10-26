@@ -45,8 +45,6 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
   --breakpoint-3xl: 1920px;
   --spacing-container: var(--container-spacing);
   --animate-scroll: scroll 60s linear infinite;
@@ -165,12 +163,6 @@
 
   body {
     @apply bg-background text-foreground;
-  }
-
-  h1,
-  h2,
-  h3 {
-    @apply font-heading;
   }
 
   ::selection {
