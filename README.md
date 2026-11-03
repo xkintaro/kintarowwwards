@@ -2,7 +2,7 @@
   <img src="https://img.shields.io/badge/Language-English-blue?style=flat-square&logo=google-translate&logoColor=white" alt="English">
 </a>
 <a href="README-TR.md">
-  <img src="https://img.shields.io/badge/Dil-Türkçe-red?style=flat-square&logo=google-translate&logoColor=white" alt="Türkçe">
+  <img src="https://img.shields.io/badge/Language-Türkçe-red?style=flat-square&logo=google-translate&logoColor=white" alt="Türkçe">
 </a>
 
   <br />
@@ -24,9 +24,11 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
   <p>
+    <a href="#demo">Demo</a> •
+    <a href="#about">About</a> •
     <a href="#features">Features</a> •
-    <a href="#tech">Technologies</a> •
-    <a href="#installation">Installation</a> •
+    <a href="#tech">Tech</a> •
+    <a href="#setup">Setup</a> •
     <a href="#license">License</a>
   </p>
 
@@ -34,7 +36,11 @@
   <br />
 </div>
 
-## 📋 About
+## <a id="demo"></a> 📷 Demo
+
+- [https://kintarowwwards.vercel.app/](https://kintarowwwards.vercel.app/)
+
+## <a id="about"></a> 📋 About
 
 **Kintarowwards** is an open-source, highly interactive personal portfolio template inspired by top-tier Awwwards-winning websites. It features smooth scrolling, physics-based micro-interactions, dynamic theme switching, and a fully multilingual system designed to deliver a premium user experience. Every detail is crafted to leave a lasting impression while maintaining high performance and clean code standards.
 
@@ -47,17 +53,16 @@
 - **Multi-language Support**: Extensible language options for global users.
 - **Responsive Design**: A mobile-first interface that looks perfect on all devices.
 
-## <a id="technologies"></a> 🛠️ Technologies
+## <a id="tech"></a> 🛠️ Tech
 
-- **Next.js**: The core React framework used for routing, server-side rendering, and performance optimization.
-- **Tailwind CSS**: Utility-first CSS framework for rapid and responsive UI styling.
-- **TypeScript**: Ensures type safety and provides a superior developer experience with clean architecture.
-- **Framer Motion**: Powers the complex, physics-based UI animations, transitions, and gesture interactions.
-- **Shadcn/UI**: Provides accessible, beautifully designed, and customizable core UI components.
-- **Lucide React**: A clean and consistent icon library used for UI navigation and actions.
-- **Lenis**: Delivers a silky-smooth, native-feeling scroll experience across all devices.
+`Next.js` · `TypeScript` · `Tailwind CSS` · `Framer Motion` · `Shadcn/UI` · `Lucide React` · `Lenis`
 
-## <a id="installation"></a> 🚀 Installation
+## <a id="setup"></a> 🚀 Setup
+
+### Requirements
+- **Node.js**
+
+### Step-by-Step Installation
 
 Follow the steps below to run the project in your local environment:
 
@@ -82,7 +87,7 @@ Follow the steps below to run the project in your local environment:
 
 You can view the project by visiting [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 📄 License <a id="license"></a>
+## <a id="license"></a> 📄 License 
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
