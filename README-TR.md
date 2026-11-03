@@ -38,7 +38,7 @@
 
 ## <a id="demo"></a> 📷 Demo
 
-- [https://kintarowwwards.vercel.app/](https://kintarowwwards.vercel.app/)
+- [https://kintarowwwards.vercel.app](https://kintarowwwards.vercel.app)
 
 ## <a id="about"></a> 📋 Hakkında
 
