@@ -60,32 +60,31 @@
 ## <a id="setup"></a> 🚀 Setup
 
 ### Requirements
+
 - **Node.js**
 
 ### Step-by-Step Installation
 
-Follow the steps below to run the project in your local environment:
-
-1. **Clone the repository:**
+1. **Clone the repository**
 
    ```bash
    git clone https://github.com/xkintaro/kintarowwwards.git
    cd kintarowwwards
    ```
 
-2. **Install dependencies:**
+2. **Install dependencies**
 
    ```bash
    npm install
    ```
 
-3. **Start the Development Server:**
+3. **Start the development server**
 
    ```bash
    npm run dev
    ```
 
-You can view the project by visiting [http://localhost:3000](http://localhost:3000) in your browser.
+Open the app at [http://localhost:3000](http://localhost:3000).
 
 ## <a id="license"></a> 📄 License 
 

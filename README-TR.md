@@ -60,32 +60,31 @@
 ## <a id="setup"></a> 🚀 Kurulum
 
 ### Gereksinimler
+
 - **Node.js**
 
 ### Adım Adım Kurulum
 
-Projeyi local ortamınızda çalıştırmak için aşağıdaki adımları izleyin:
-
-1. **Repository'yi clone'layın:**
+1. **Depoyu klonlayın**
 
    ```bash
    git clone https://github.com/xkintaro/kintarowwwards.git
    cd kintarowwwards
    ```
 
-2. **Dependency'leri yükleyin:**
+2. **Bağımlılıkları yükleyin**
 
    ```bash
    npm install
    ```
 
-3. **Development Server'ı başlatın:**
+3. **Geliştirme sunucusunu başlatın**
 
    ```bash
    npm run dev
    ```
 
-Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresine giderek projeyi görüntüleyebilirsiniz.
+Uygulamayı şu adreste açın: [http://localhost:3000](http://localhost:3000).
 
 ## <a id="license"></a> 📄 Lisans 
 
@@ -96,4 +95,3 @@ Bu proje MIT Lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICE
 <p align="center">
   <sub>❤️ Developed by "Mustafa TAŞAL" (kintaro)</sub>
 </p>
-
