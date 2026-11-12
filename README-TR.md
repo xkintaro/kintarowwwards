@@ -14,7 +14,7 @@
   <br />
 
   <p>
-     Awwwards tasarım kalitesinden ilham alan kişisel bir portfolio web sitesi.
+     Awwwards tasarım kalitesinden ilham alan kişisel bir portfolyo web sitesi.
   </p>
 
 ![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js)
@@ -42,16 +42,16 @@
 
 ## <a id="about"></a> 📋 Hakkında
 
-**Kintarowwards**, üst düzey Awwwards ödüllü web sitelerinden ilham alan, open-source ve oldukça interaktif bir kişisel portfolio template'idir. Yüksek performans ve clean code standartlarını korurken, premium bir kullanıcı deneyimi sunmak üzere tasarlanmış smooth scrolling, fizik tabanlı micro-interaction'lar, dinamik theme switching ve multilingual bir sistem barındırır. Her detay, kalıcı bir izlenim bırakacak şekilde özenle hazırlanmıştır.
+**Kintarowwwards**, Awwwards ödüllü üst düzey web sitelerinden ilham alan, açık kaynaklı ve etkileşimli bir kişisel portfolyo şablonudur. Akıcı kaydırma, fizik tabanlı mikro etkileşimler, dinamik tema geçişi ve çok dilli bir yapı sunar. Yüksek performansı ve temiz kod yapısını korurken kaliteli bir kullanıcı deneyimi sunmak üzere tasarlanmıştır. Her detay, kalıcı bir izlenim bırakacak şekilde özenle hazırlanmıştır.
 
 ## <a id="features"></a> ✨ Özellikler
 
-- **Gelişmiş Animasyonlar**: Framer Motion ve Motion kütüphaneleri ile akıcı transition'lar ve micro-interaction'lar.
-- **Fizik Tabanlı Component'ler**: Mouse hareketlerine tepki veren "Hanging Profile" gibi dinamik ve fizik kurallarına uygun UI elementleri.
-- **Smooth Scroll**: Lenis entegrasyonu ile modern ve kaliteli bir scrolling deneyimi.
-- **Dinamik Theme Desteği**: next-themes ile optimize edilmiş Dark ve Light mode geçişleri.
-- **Multi-language Desteği**: Global kullanıcılar için genişletilebilir dil seçenekleri.
-- **Responsive Design**: Tüm cihazlarda kusursuz görünen mobile-first bir arayüz.
+- **Gelişmiş Animasyonlar**: Framer Motion ve Motion kütüphaneleriyle akıcı geçişler ve mikro etkileşimler.
+- **Fizik Tabanlı Bileşenler**: Fare hareketlerine tepki veren "Hanging Profile" gibi dinamik ve fizik kurallarına uygun arayüz öğeleri.
+- **Akıcı Kaydırma**: Lenis entegrasyonuyla modern ve kaliteli bir kaydırma deneyimi.
+- **Dinamik Tema Desteği**: next-themes ile optimize edilmiş koyu ve açık tema geçişleri.
+- **Çoklu Dil Desteği**: Farklı ülkelerden kullanıcılar için genişletilebilir dil seçenekleri.
+- **Duyarlı Tasarım**: Tüm cihazlarda kusursuz görünen, mobil öncelikli bir arayüz.
 
 ## <a id="tech"></a> 🛠️ Teknolojiler
 
@@ -86,7 +86,7 @@
 
 Uygulamayı şu adreste açın: [http://localhost:3000](http://localhost:3000).
 
-## <a id="license"></a> 📄 Lisans 
+## <a id="license"></a> 📄 Lisans
 
 Bu proje MIT Lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakabilirsiniz.
 

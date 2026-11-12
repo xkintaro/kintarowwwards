@@ -42,7 +42,7 @@
 
 ## <a id="about"></a> 📋 About
 
-**Kintarowwards** is an open-source, highly interactive personal portfolio template inspired by top-tier Awwwards-winning websites. It features smooth scrolling, physics-based micro-interactions, dynamic theme switching, and a fully multilingual system designed to deliver a premium user experience. Every detail is crafted to leave a lasting impression while maintaining high performance and clean code standards.
+**Kintarowwwards** is an open-source, highly interactive personal portfolio template inspired by top-tier Awwwards-winning websites. It features smooth scrolling, physics-based micro-interactions, dynamic theme switching, and a fully multilingual system designed to deliver a premium user experience. Every detail is crafted to leave a lasting impression while maintaining high performance and clean code standards.
 
 ## <a id="features"></a> ✨ Features
 
@@ -86,7 +86,7 @@
 
 Open the app at [http://localhost:3000](http://localhost:3000).
 
-## <a id="license"></a> 📄 License 
+## <a id="license"></a> 📄 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
